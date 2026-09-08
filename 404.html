@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="description" content="Local trading journal. Trades stay in this browser until you export them." />
+    <title>DESK — Trading journal</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="css/desk.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+    <script>
+      (function () {
+        if (location.protocol === "file:") return;
+        var parts = location.pathname.replace(/\/+$/, "").split("/");
+        var last = parts.pop() || "";
+        if (!last || last === "index.html" || last === "404.html" || last.indexOf(".") !== -1) return;
+        var base = parts.join("/") + "/";
+        location.replace(location.origin + base + "#/" + last + location.search);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="js/desk.js" defer></script>
+  </body>
+</html>
