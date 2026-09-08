@@ -12,10 +12,11 @@
     <script>
       (function () {
         if (location.protocol === "file:") return;
-        var parts = location.pathname.replace(/\/+$/, "").split("/");
-        var last = parts.pop() || "";
+        var segs = location.pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+        if (segs.length <= 1) return;
+        var last = segs[segs.length - 1];
         if (!last || last === "index.html" || last === "404.html" || last.indexOf(".") !== -1) return;
-        var base = parts.join("/") + "/";
+        var base = "/" + segs.slice(0, -1).join("/") + "/";
         location.replace(location.origin + base + "#/" + last + location.search);
       })();
     </script>
